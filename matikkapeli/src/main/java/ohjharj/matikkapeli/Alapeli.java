@@ -11,5 +11,5 @@ package ohjharj.matikkapeli;
  * @author matluukk@cs
  */
 public interface Alapeli {
-    
+    public void pelaaPeli();
 }
