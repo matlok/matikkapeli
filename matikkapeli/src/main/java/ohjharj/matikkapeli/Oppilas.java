@@ -11,13 +11,17 @@ package ohjharj.matikkapeli;
  * @author matluukk@cs
  */
 public class Oppilas {
-    
-    private String nimi ;
-    private int taso ;
-    private Historia historia = new Historia();
+    public String nimi;
+    public int taso ;
+    public Historia historia = new Historia();
     
     public Oppilas(String nimi) {
         this.nimi = nimi;
         this.taso = 1;
+    }
+    
+    public Oppilas(String nimi, int taso) {
+        this.nimi = nimi;
+        this.taso = taso;
     }
 }

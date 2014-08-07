@@ -14,15 +14,17 @@ import java.util.Scanner;
  * @author matluukk@cs
  */
 public class yhteenlaskuPeli implements Alapeli {
-    private ArrayList<Tehtava> tehtavat;
-    private Scanner lukija;
-    private int oikeatVastaukset;
-    public yhteenlaskuPeli(int taso, Scanner lukija) {
+    public ArrayList<Tehtava> tehtavat;
+    public Scanner lukija;
+    public int oikeatVastaukset;
+    public Oppilas oppilas;
+    public yhteenlaskuPeli(Oppilas oppilas, Scanner lukija) {
+        this.oppilas = oppilas;
         this.lukija = lukija;
         this.oikeatVastaukset = 0;
         tehtavat = new ArrayList();
         for(int i = 0; i<10; i++) {
-            Tehtava tehtava = new Tehtava(taso);
+            Tehtava tehtava = new Tehtava(oppilas.taso);
             tehtavat.add(tehtava);
         }
     }
@@ -41,5 +43,6 @@ public class yhteenlaskuPeli implements Alapeli {
         System.out.println(tehtava.oikeaVastaus);
     }
         System.out.println("Sait " + oikeatVastaukset + " tehtävää oikein");
+        oppilas.historia.lisaaTapahtuma("yhteenlaskuPeli", oppilas.nimi, oppilas.taso, oikeatVastaukset, 10);
 }    
 }

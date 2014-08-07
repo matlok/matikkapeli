@@ -19,16 +19,25 @@ public class App
         System.out.println("Moi " + nimi);
         System.out.println("Mikä on tasosi?");
         taso = Integer.parseInt(lukija.nextLine());
-        System.out.println("Jos haluat harjoitella yhteenlaskua kirjoita \"pelaa\"");
-        String komento;
-        komento = lukija.nextLine();
+        Oppilas oppilas = new Oppilas(nimi,taso);
+
+        
+        while(!lukija.nextLine().equals("lopeta")) {
+              System.out.println("Jos haluat harjoitella yhteenlaskua kirjoita \"pelaa\"");
+              System.out.println("Jos haluat tarkastella tehtävähistoriaasi kirjoita \"historia\"");
+              System.out.println("Jos haluat lopettaa pelaamisen kirjoita \"lopeta\"");
+              String komento = lukija.nextLine();
         if(komento.equals("pelaa")) {
-            yhteenlaskuPeli yhteenlasku = new yhteenlaskuPeli(taso,lukija);
+            yhteenlaskuPeli yhteenlasku = new yhteenlaskuPeli(oppilas,lukija);
             yhteenlasku.pelaaPeli();
         }
+        else if (komento.equals("historia")) {
+            System.out.println(oppilas.historia.toString());
+        }
+        
         else {
             System.out.println("Nyt en ymmärrä");
         }
-   
+        }
     }
 }
