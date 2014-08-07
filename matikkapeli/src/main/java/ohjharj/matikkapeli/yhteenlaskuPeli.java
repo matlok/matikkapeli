@@ -25,7 +25,7 @@ public class yhteenlaskuPeli implements Alapeli {
         this.oikeatVastaukset = 0;
         tehtavat = new ArrayList();
         for(int i = 0; i<10; i++) {
-            Tehtava tehtava = new Tehtava(oppilas.taso);
+            Tehtava tehtava = new Tehtava(oppilas.getTaso());
             tehtavat.add(tehtava);
         }
     }
@@ -43,6 +43,6 @@ public class yhteenlaskuPeli implements Alapeli {
         }
     }
         System.out.println("Sait " + oikeatVastaukset + " tehtävää oikein");
-        oppilas.historia.lisaaTapahtuma("yhteenlaskuPeli", oppilas.nimi, oppilas.taso, oikeatVastaukset, 10);
+        oppilas.historia.lisaaTapahtuma("yhteenlaskuPeli", oppilas.getNimi(), oppilas.getTaso(), oikeatVastaukset, 10);
 }    
 }

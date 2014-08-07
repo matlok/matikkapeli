@@ -11,8 +11,8 @@ package ohjharj.matikkapeli;
  * @author matluukk@cs
  */
 public class Oppilas {
-    public String nimi;
-    public int taso;
+    private String nimi;
+    private int taso;
     public Historia historia;
     
     public Oppilas(String nimi) {
@@ -25,4 +25,13 @@ public class Oppilas {
         this.nimi = nimi;
         this.taso = taso;
     }
+
+    public String getNimi() {
+        return nimi;
+    }
+
+    public int getTaso() {
+        return taso;
+    }
+    
 }

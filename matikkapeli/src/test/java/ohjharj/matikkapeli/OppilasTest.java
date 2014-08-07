@@ -1,3 +1,5 @@
+package ohjharj.matikkapeli;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -33,17 +35,17 @@ public class OppilasTest {
     @Test
     public void konstruktoriAsettaaNimenOikein() {
 
-        assertEquals("Pekka", oppilas.nimi);
+        assertEquals("Pekka", oppilas.getNimi());
     }
 
     @Test
     public void konstruktoriAsettaaTasonOikein() {
 
-        assertEquals(4, oppilas2.taso);
+        assertEquals(4, oppilas2.getTaso());
     }
     
     @Test
     public void konstruktoriAsettaaOletustasonOikein() {
-        assertEquals(1, oppilas.taso);
+        assertEquals(1, oppilas.getTaso());
     }
 }

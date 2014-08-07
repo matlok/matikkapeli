@@ -18,9 +18,11 @@ public class Historia {
         this.historia = new ArrayList();
     }
     
-    public void lisaaTapahtuma(String peli, String nimi, int taso, int oikeatVastaukset, int tehtavienLukumaara) {
+    public Timestamp lisaaTapahtuma(String peli, String nimi, int taso, int oikeatVastaukset, int tehtavienLukumaara) {
         Tapahtuma tapahtuma = new Tapahtuma(peli, nimi, taso, oikeatVastaukset, tehtavienLukumaara);
         historia.add(tapahtuma);
+        Timestamp ajanhetki = tapahtuma.ajanhetki;
+        return ajanhetki;
     }
     
     @Override
