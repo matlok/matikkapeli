@@ -12,12 +12,13 @@ package ohjharj.matikkapeli;
  */
 public class Oppilas {
     public String nimi;
-    public int taso ;
-    public Historia historia = new Historia();
+    public int taso;
+    public Historia historia;
     
     public Oppilas(String nimi) {
         this.nimi = nimi;
         this.taso = 1;
+        this.historia = new Historia();
     }
     
     public Oppilas(String nimi, int taso) {

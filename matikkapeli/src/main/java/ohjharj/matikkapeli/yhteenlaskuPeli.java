@@ -18,6 +18,7 @@ public class yhteenlaskuPeli implements Alapeli {
     public Scanner lukija;
     public int oikeatVastaukset;
     public Oppilas oppilas;
+    
     public yhteenlaskuPeli(Oppilas oppilas, Scanner lukija) {
         this.oppilas = oppilas;
         this.lukija = lukija;
@@ -40,7 +41,6 @@ public class yhteenlaskuPeli implements Alapeli {
         else {
             System.out.println("VÄÄRÄ VASTAUS");
         }
-        System.out.println(tehtava.oikeaVastaus);
     }
         System.out.println("Sait " + oikeatVastaukset + " tehtävää oikein");
         oppilas.historia.lisaaTapahtuma("yhteenlaskuPeli", oppilas.nimi, oppilas.taso, oikeatVastaukset, 10);
