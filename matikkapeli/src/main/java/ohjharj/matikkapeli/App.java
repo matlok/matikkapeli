@@ -28,7 +28,7 @@ public class App {
             System.out.println("Jos haluat lopettaa pelaamisen kirjoita \"lopeta\"");
             String komento = lukija.nextLine();
             if (komento.equals("pelaa")) {
-                yhteenlaskuPeli yhteenlasku = new yhteenlaskuPeli(oppilas, lukija);
+                Yhteenlaskupeli yhteenlasku = new Yhteenlaskupeli(oppilas, lukija);
                 yhteenlasku.pelaaPeli();
             } else if (komento.equals("historia")) {
                 System.out.println(oppilas.historia.toString());

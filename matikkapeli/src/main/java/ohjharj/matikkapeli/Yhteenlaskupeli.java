@@ -13,25 +13,25 @@ import java.util.Scanner;
  *
  * @author matluukk@cs
  */
-public class yhteenlaskuPeli implements Alapeli {
-    public ArrayList<Tehtava> tehtavat;
+public class Yhteenlaskupeli implements Alapeli {
+    public ArrayList<YhteenlaskuTehtävä> tehtavat;
     public Scanner lukija;
     public int oikeatVastaukset;
     public Oppilas oppilas;
     
-    public yhteenlaskuPeli(Oppilas oppilas, Scanner lukija) {
+    public Yhteenlaskupeli(Oppilas oppilas, Scanner lukija) {
         this.oppilas = oppilas;
         this.lukija = lukija;
         this.oikeatVastaukset = 0;
         tehtavat = new ArrayList();
         for(int i = 0; i<10; i++) {
-            Tehtava tehtava = new Tehtava(oppilas.getTaso());
+            YhteenlaskuTehtävä tehtava = new YhteenlaskuTehtävä(oppilas.getTaso());
             tehtavat.add(tehtava);
         }
     }
     @Override
     public void pelaaPeli() {
-    for(Tehtava tehtava: tehtavat) {
+    for(YhteenlaskuTehtävä tehtava: tehtavat) {
         System.out.println(tehtava.kysymys + " = ?");
         String vastaus = lukija.nextLine();
         if(vastaus.equals(tehtava.oikeaVastaus)) {

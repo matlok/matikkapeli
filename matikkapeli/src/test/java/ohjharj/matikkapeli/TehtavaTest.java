@@ -6,7 +6,7 @@ package ohjharj.matikkapeli;
  * and open the template in the editor.
  */
 
-import ohjharj.matikkapeli.Tehtava;
+import ohjharj.matikkapeli.YhteenlaskuTehtävä;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -20,13 +20,13 @@ import static org.junit.Assert.*;
  */
 public class TehtavaTest {
     int taso;
-    Tehtava tehtava;
+    YhteenlaskuTehtävä tehtava;
     public TehtavaTest() {
     }
 
     @Before
     public void setUp() {
-    this.tehtava = new Tehtava(2);
+    this.tehtava = new YhteenlaskuTehtävä(2);
     }
     
     @Test

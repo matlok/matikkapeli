@@ -10,12 +10,12 @@ import java.util.Random;
  *
  * @author matluukk@cs
  */
-public class Tehtava {
+public class YhteenlaskuTehtävä {
     public int taso;
     public String oikeaVastaus;
     public String kysymys;
     
-    public Tehtava(int taso) {
+    public YhteenlaskuTehtävä(int taso) {
         this.taso = taso;
         int ylaraja = taso*10;
         Random satunnaisluku = new Random();
