@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package ohjharj.matikkapeli;
+package Matikkapeli;
 
 /**
  *
@@ -24,6 +24,7 @@ public class Oppilas {
     public Oppilas(String nimi, int taso) {
         this.nimi = nimi;
         this.taso = taso;
+        this.historia = new Historia();
     }
 
     public String getNimi() {

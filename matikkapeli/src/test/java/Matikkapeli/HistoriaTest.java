@@ -1,4 +1,4 @@
-package ohjharj.matikkapeli;
+package Matikkapeli;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -6,7 +6,8 @@ package ohjharj.matikkapeli;
  * and open the template in the editor.
  */
 
-import ohjharj.matikkapeli.YhteenlaskuTehtävä;
+import java.sql.Timestamp;
+import Matikkapeli.Historia;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -18,19 +19,20 @@ import static org.junit.Assert.*;
  *
  * @author matluukk
  */
-public class TehtavaTest {
-    int taso;
-    YhteenlaskuTehtävä tehtava;
-    public TehtavaTest() {
+public class HistoriaTest {
+    private Historia historia;
+    public HistoriaTest() {
     }
-
+    
     @Before
     public void setUp() {
-    this.tehtava = new YhteenlaskuTehtävä(2);
+      this.historia = new Historia();
     }
     
     @Test
-    public void konstruktoriAsettaaTasonOikein() {
-        assertEquals(2,tehtava.taso);
+    public void lisaaTapahtumaToimiiOikein() {
+        Timestamp ajanhetki = historia.lisaaTapahtuma("peli1", "Pekka", 2, 5, 10);
+        
+        assertEquals("[" + ajanhetki + " Pekka" + " peli1" + " 5/10" + "]" ,historia.toString());
     }
 }

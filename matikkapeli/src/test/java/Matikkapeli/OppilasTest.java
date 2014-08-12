@@ -1,4 +1,4 @@
-package ohjharj.matikkapeli;
+package Matikkapeli;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -6,7 +6,7 @@ package ohjharj.matikkapeli;
  * and open the template in the editor.
  */
 
-import ohjharj.matikkapeli.Oppilas;
+import Matikkapeli.Oppilas;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

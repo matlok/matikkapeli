@@ -4,8 +4,10 @@
  * and open the template in the editor.
  */
 
-package ohjharj.matikkapeli;
+package Logiikka;
 
+import Matikkapeli.Oppilas;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -14,10 +16,10 @@ import java.util.Scanner;
  * @author matluukk@cs
  */
 public class Yhteenlaskupeli implements Alapeli {
-    public ArrayList<YhteenlaskuTehtävä> tehtavat;
+    private ArrayList<YhteenlaskuTehtävä> tehtavat;
     public Scanner lukija;
-    public int oikeatVastaukset;
-    public Oppilas oppilas;
+    private int oikeatVastaukset;
+    private Oppilas oppilas;
     
     public Yhteenlaskupeli(Oppilas oppilas, Scanner lukija) {
         this.oppilas = oppilas;
@@ -42,7 +44,7 @@ public class Yhteenlaskupeli implements Alapeli {
             System.out.println("VÄÄRÄ VASTAUS");
         }
     }
-        System.out.println("Sait " + oikeatVastaukset + " tehtävää oikein");
-        oppilas.historia.lisaaTapahtuma("yhteenlaskuPeli", oppilas.getNimi(), oppilas.getTaso(), oikeatVastaukset, 10);
+        Timestamp aika = oppilas.historia.lisaaTapahtuma("Yhteenlasku", oppilas.getNimi(), oppilas.getTaso(), oikeatVastaukset, 10);
+        System.out.println("Sait " + oikeatVastaukset + " tehtävää oikein"+ "    tapahtuma lisätty " + aika.toString());
 }    
 }

@@ -1,16 +1,23 @@
-package ohjharj.matikkapeli;
+package Kayttoliittyma;
 
 import java.util.Scanner;
+import Matikkapeli.Oppilas;
+import Logiikka.Yhteenlaskupeli;
 
 /**
  * Hello world!
  *
  */
-public class App {
+public class Tekstikayttis {
+    private Oppilas oppilas;
+    
+    public Tekstikayttis() {
 
-    public static int taso;
-
-    public static void main(String[] args) {
+        
+    }
+    
+    
+    public void aja() {
         
 
         Scanner lukija = new Scanner(System.in);
@@ -19,19 +26,23 @@ public class App {
         String nimi = lukija.nextLine();
         System.out.println("Moi " + nimi);
         System.out.println("Mikä on tasosi?");
-        taso = Integer.parseInt(lukija.nextLine());
-        Oppilas oppilas = new Oppilas(nimi, taso);
+        int taso = Integer.parseInt(lukija.nextLine());
+        this.oppilas = new Oppilas(nimi, taso);
+        String komento = "";
+        
 
-        while (!lukija.nextLine().equals("lopeta")) {
+        while (!komento.equals("lopeta")) {
             System.out.println("Jos haluat harjoitella yhteenlaskua kirjoita \"pelaa\"");
             System.out.println("Jos haluat tarkastella tehtävähistoriaasi kirjoita \"historia\"");
             System.out.println("Jos haluat lopettaa pelaamisen kirjoita \"lopeta\"");
-            String komento = lukija.nextLine();
+            komento = lukija.nextLine();
             if (komento.equals("pelaa")) {
                 Yhteenlaskupeli yhteenlasku = new Yhteenlaskupeli(oppilas, lukija);
                 yhteenlasku.pelaaPeli();
             } else if (komento.equals("historia")) {
                 System.out.println(oppilas.historia.toString());
+            } else if (komento.equals("lopeta")) {
+                
             } else {
                 System.out.println("Nyt en ymmärrä");
             }
