@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package Logiikka;
 
 import Matikkapeli.Oppilas;
@@ -44,7 +38,7 @@ public class Yhteenlaskupeli implements Alapeli {
             System.out.println("VÄÄRÄ VASTAUS");
         }
     }
-        Timestamp aika = oppilas.historia.lisaaTapahtuma("Yhteenlasku", oppilas.getNimi(), oppilas.getTaso(), oikeatVastaukset, 10);
+        Timestamp aika = oppilas.historia.lisaaTapahtuma("Yhteenlasku", oikeatVastaukset, 10);
         System.out.println("Sait " + oikeatVastaukset + " tehtävää oikein"+ "    tapahtuma lisätty " + aika.toString());
 }    
 }

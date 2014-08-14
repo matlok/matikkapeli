@@ -1,0 +1,3 @@
+pertti:1
+1408026051726:Yhteenlasku:10:10
+1408026065935:Yhteenlasku:9:10

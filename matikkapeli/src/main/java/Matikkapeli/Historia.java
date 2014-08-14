@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package Matikkapeli;
 import java.util.*;
 import java.sql.Timestamp;
@@ -18,11 +14,15 @@ public class Historia {
         this.historia = new ArrayList<Tapahtuma>();
     }
     
-    public Timestamp lisaaTapahtuma(String peli, String nimi, int taso, int oikeatVastaukset, int tehtavienLukumaara) {
-        Tapahtuma tapahtuma = new Tapahtuma(peli, nimi, taso, oikeatVastaukset, tehtavienLukumaara);
+    public Timestamp lisaaTapahtuma(String peli, int oikeatVastaukset, int tehtavienLukumaara) {
+        Tapahtuma tapahtuma = new Tapahtuma(peli, oikeatVastaukset, tehtavienLukumaara);
         historia.add(tapahtuma);
         Timestamp ajanhetki = tapahtuma.getAjanhetki();
         return ajanhetki;
+    }
+    
+    public ArrayList<Tapahtuma> getHistoria() {
+        return historia;
     }
     
     @Override

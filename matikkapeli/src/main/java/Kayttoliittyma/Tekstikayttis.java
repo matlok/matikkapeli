@@ -3,13 +3,10 @@ package Kayttoliittyma;
 import java.util.Scanner;
 import Matikkapeli.Oppilas;
 import Logiikka.Yhteenlaskupeli;
+import Tiedostonhallinta.Tiedostonhallinta;
+import java.io.IOException;
 
-/**
- * Hello world!
- *
- */
 public class Tekstikayttis {
-    private Oppilas oppilas;
     
     public Tekstikayttis() {
 
@@ -17,17 +14,15 @@ public class Tekstikayttis {
     }
     
     
-    public void aja() {
+    public void aja() throws IOException {
         
 
         Scanner lukija = new Scanner(System.in);
         System.out.println("Tervetuloa pelaamaan!");
         System.out.println("Mikä on nimesi?");
         String nimi = lukija.nextLine();
-        System.out.println("Moi " + nimi);
-        System.out.println("Mikä on tasosi?");
-        int taso = Integer.parseInt(lukija.nextLine());
-        this.oppilas = new Oppilas(nimi, taso);
+        Tiedostonhallinta tiedostonhallinta = new Tiedostonhallinta(nimi);
+        Oppilas oppilas = tiedostonhallinta.luo();
         String komento = "";
         
 
@@ -47,5 +42,6 @@ public class Tekstikayttis {
                 System.out.println("Nyt en ymmärrä");
             }
         }
+        tiedostonhallinta.tallenna(oppilas);
     }
 }
