@@ -41,7 +41,7 @@ public class Tiedostonhallinta {
         for (Tapahtuma tapahtuma : tapahtumat) {
          kirjoittaja.write(tapahtuma.getAjanhetki().getTime() + ":");
          kirjoittaja.write(tapahtuma.getPelinNimi() + ":");
-         kirjoittaja.write(oppilas.getTaso() + ":");
+         kirjoittaja.write(tapahtuma.getTaso() + ":");
          kirjoittaja.write(tapahtuma.getOikeatVastaukset() + ":");
          kirjoittaja.write(tapahtuma.getTehtavienLukumaara() + "\n");
         }

@@ -1,0 +1,4 @@
+pertti:2
+1408027616791:Yhteenlasku:1:6:10
+1408027616791:Yhteenlasku:1:6:10
+1408027637973:Yhteenlasku:2:6:10
