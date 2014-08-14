@@ -38,7 +38,7 @@ public class Yhteenlaskupeli implements Alapeli {
             System.out.println("VÄÄRÄ VASTAUS");
         }
     }
-        Timestamp aika = oppilas.historia.lisaaTapahtuma("Yhteenlasku", oikeatVastaukset, 10);
+        Timestamp aika = oppilas.historia.lisaaTapahtuma("Yhteenlasku", oppilas.getTaso(), oikeatVastaukset, 10);
         System.out.println("Sait " + oikeatVastaukset + " tehtävää oikein"+ "    tapahtuma lisätty " + aika.toString());
 }    
 }

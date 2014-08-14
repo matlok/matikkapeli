@@ -16,14 +16,14 @@ public class Tapahtuma implements Serializable {
     private final int oikeatVastaukset;
     private final int tehtavienLukumaara;
 
-    public Tapahtuma(String peli, int oikeatVastaukset, int tehtavienLukumaara) {
+    public Tapahtuma(String peli, int taso, int oikeatVastaukset, int tehtavienLukumaara) {
         this.peli = peli;
         this.oikeatVastaukset = oikeatVastaukset;
         this.tehtavienLukumaara = tehtavienLukumaara;
         this.ajanhetki = new Timestamp(aika.getTime());
     }
 
-    public Tapahtuma(Timestamp ajanhetki, String peli, int oikeatVastaukset, int tehtavienLukumaara) {
+    public Tapahtuma(Timestamp ajanhetki, int taso, String peli, int oikeatVastaukset, int tehtavienLukumaara) {
         this.ajanhetki = ajanhetki;
         this.peli = peli;
         this.oikeatVastaukset = oikeatVastaukset;

@@ -3,6 +3,7 @@ package Tiedostonhallinta;
 import Matikkapeli.Oppilas;
 import Matikkapeli.Tapahtuma;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.Timestamp;
@@ -23,7 +24,12 @@ public class Tiedostonhallinta {
     
     public Tiedostonhallinta(String nimi) throws IOException {
         this.tiedosto = new File(nimi + ".txt");
-        this.lukija = new Scanner(tiedosto);
+        try {
+            this.lukija = new Scanner(tiedosto); }
+        catch(FileNotFoundException e) {
+            FileWriter kirjoittaja = new FileWriter(tiedosto);
+            this.lukija = new Scanner(tiedosto);
+        }
         this.nimi = nimi;
     }
     
@@ -35,6 +41,7 @@ public class Tiedostonhallinta {
         for (Tapahtuma tapahtuma : tapahtumat) {
          kirjoittaja.write(tapahtuma.getAjanhetki().getTime() + ":");
          kirjoittaja.write(tapahtuma.getPelinNimi() + ":");
+         kirjoittaja.write(oppilas.getTaso() + ":");
          kirjoittaja.write(tapahtuma.getOikeatVastaukset() + ":");
          kirjoittaja.write(tapahtuma.getTehtavienLukumaara() + "\n");
         }
@@ -54,9 +61,10 @@ public class Tiedostonhallinta {
             String[] rivinSisalto = seuraavaRivi.split(":");
             Timestamp ajanhetki = new Timestamp(Long.parseLong(rivinSisalto[0]));
             String peli = rivinSisalto[1];
-            int oikeatVastaukset = Integer.parseInt(rivinSisalto[2]);
-            int tehtavienLukumaara = Integer.parseInt(rivinSisalto[3]);
-            oppilas.historia.lisaaTapahtuma(peli, oikeatVastaukset, tehtavienLukumaara);
+            int tapahtumanTaso = Integer.parseInt(rivinSisalto[2]);
+            int oikeatVastaukset = Integer.parseInt(rivinSisalto[3]);
+            int tehtavienLukumaara = Integer.parseInt(rivinSisalto[4]);
+            oppilas.historia.lisaaTapahtuma(peli, tapahtumanTaso, oikeatVastaukset, tehtavienLukumaara);
             }
         return oppilas;
         }

@@ -14,8 +14,8 @@ public class Historia {
         this.historia = new ArrayList<Tapahtuma>();
     }
     
-    public Timestamp lisaaTapahtuma(String peli, int oikeatVastaukset, int tehtavienLukumaara) {
-        Tapahtuma tapahtuma = new Tapahtuma(peli, oikeatVastaukset, tehtavienLukumaara);
+    public Timestamp lisaaTapahtuma(String peli,int taso, int oikeatVastaukset, int tehtavienLukumaara) {
+        Tapahtuma tapahtuma = new Tapahtuma(peli, taso, oikeatVastaukset, tehtavienLukumaara);
         historia.add(tapahtuma);
         Timestamp ajanhetki = tapahtuma.getAjanhetki();
         return ajanhetki;
