@@ -16,12 +16,6 @@ public class Tiedostonhallinta {
     private Scanner lukija;
     private String nimi;
     
-    public Tiedostonhallinta(Oppilas oppilas) throws IOException {
-        this.tiedosto = new File(oppilas.getNimi() + ".txt");
-        this.lukija = new Scanner(tiedosto);
-        this.nimi = oppilas.getNimi();
-    }
-    
     public Tiedostonhallinta(String nimi) throws IOException {
         this.tiedosto = new File(nimi + ".txt");
         try {
@@ -66,9 +60,11 @@ public class Tiedostonhallinta {
             int tehtavienLukumaara = Integer.parseInt(rivinSisalto[4]);
             oppilas.historia.lisaaTapahtuma(peli, tapahtumanTaso, oikeatVastaukset, tehtavienLukumaara);
             }
+            System.out.println("Tervetuloa takaisin!");
         return oppilas;
         }
         else {
+            System.out.println("Uusi käyttäjä luotu.");
             return new Oppilas(nimi);
         }
     }

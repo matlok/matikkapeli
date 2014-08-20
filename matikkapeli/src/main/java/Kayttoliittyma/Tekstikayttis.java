@@ -1,5 +1,6 @@
 package Kayttoliittyma;
 
+import Logiikka.MiinusLaskupeli;
 import java.util.Scanner;
 import Matikkapeli.Oppilas;
 import Logiikka.Yhteenlaskupeli;
@@ -19,7 +20,7 @@ public class Tekstikayttis {
 
         Scanner lukija = new Scanner(System.in);
         System.out.println("Tervetuloa pelaamaan!");
-        System.out.println("Mikä on nimesi?");
+        System.out.println("Kirjoita nimesi");
         String nimi = lukija.nextLine();
         Tiedostonhallinta tiedostonhallinta = new Tiedostonhallinta(nimi);
         Oppilas oppilas = tiedostonhallinta.luo();
@@ -27,15 +28,19 @@ public class Tekstikayttis {
         
 
         while (!komento.equals("lopeta")) {
-            System.out.println("Jos haluat harjoitella yhteenlaskua kirjoita \"pelaa\"");
+            System.out.println("Jos haluat harjoitella yhteenlaskua kirjoita \"yhteenlasku\"");
+            System.out.println("Jos haluat harjoitella miinuslaskuja kirjoita \"miinuslasku\"");
             System.out.println("Jos haluat tarkastella tehtävähistoriaasi kirjoita \"historia\"");
             System.out.println("Jos haluat lopettaa pelaamisen kirjoita \"lopeta\"");
             komento = lukija.nextLine();
-            if (komento.equals("pelaa")) {
+            if (komento.equals("yhteenlasku")) {
                 Yhteenlaskupeli yhteenlasku = new Yhteenlaskupeli(oppilas, lukija);
                 yhteenlasku.pelaaPeli();
             } else if (komento.equals("historia")) {
                 System.out.println(oppilas.historia.toString());
+            } else if (komento.equals("miinuslasku")) {
+                MiinusLaskupeli miinuslasku = new MiinusLaskupeli(oppilas, lukija);
+                miinuslasku.pelaaPeli();
             } else if (komento.equals("lopeta")) {
                 
             } else {

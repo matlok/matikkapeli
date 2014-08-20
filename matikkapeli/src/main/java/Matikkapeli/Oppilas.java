@@ -22,7 +22,24 @@ public class Oppilas {
         this.taso = taso;
         this.historia = new Historia();
     }
-
+    
+    public void tarkistaTaso() {
+        int kysymykset = 0;
+        int oikeatVastaukset = 0;
+               
+        for(Tapahtuma tapahtuma: historia.getHistoria()) {
+            kysymykset = kysymykset + tapahtuma.getTehtavienLukumaara();
+            oikeatVastaukset = oikeatVastaukset + tapahtuma.getOikeatVastaukset();
+        }
+        
+        if (kysymykset>100*this.taso) {
+            if (oikeatVastaukset/kysymykset > 0.5 ) {
+                this.taso++;
+                System.out.println("Olet onnistunut niin hyvin että nouset tasolle " + taso + "\n" + "ONNEKSI OLKOON!");
+            }
+        }
+    }
+    
     public String getNimi() {
         return nimi;
     }
