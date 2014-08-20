@@ -6,7 +6,7 @@ package Logiikka;
  * and open the template in the editor.
  */
 
-import Logiikka.YhteenlaskuTehtävä;
+import Logiikka.YhteenlaskuTehtava;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -18,19 +18,31 @@ import static org.junit.Assert.*;
  *
  * @author matluukk
  */
-public class TehtavaTest {
+public class YhteenlaskuTehtavaTest {
     int taso;
-    YhteenlaskuTehtävä tehtava;
-    public TehtavaTest() {
+    YhteenlaskuTehtava tehtava;
+    YhteenlaskuTehtava tehtava2;
+    public YhteenlaskuTehtavaTest() {
     }
 
     @Before
     public void setUp() {
-    this.tehtava = new YhteenlaskuTehtävä(2);
+    this.tehtava = new YhteenlaskuTehtava(2);
+    this.tehtava2 = new YhteenlaskuTehtava(1);
     }
     
     @Test
     public void konstruktoriAsettaaTasonOikein() {
         assertEquals(2,tehtava.taso);
+    }
+    
+    @Test
+    public void vaikeustasoMeneeOikeinEka() {
+        assertTrue((tehtava2.getLuku1() + tehtava2.getLuku2())<=10 );
+    }
+    
+    @Test
+    public void vaikeustasoMeneeOikeinToka() {
+        assertTrue((tehtava.getLuku1() + tehtava.getLuku2())<=20 );
     }
 }

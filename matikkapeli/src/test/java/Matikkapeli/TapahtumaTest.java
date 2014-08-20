@@ -25,17 +25,12 @@ public class TapahtumaTest {
 
     @Before
     public void setUp() {
-      this.tapahtuma = new Tapahtuma("peli1", "Pekka", 2, 5, 20);
+      this.tapahtuma = new Tapahtuma("peli1", 2, 5, 20);
     }
 
     @Test
     public void asettaakoKonstruktoriPelinOikein() {
         assertEquals("peli1", tapahtuma.getPelinNimi());
-    }
-    
-    @Test
-    public void asettaakoKonstruktoriNimenOikein() {
-        assertEquals("Pekka", tapahtuma.getNimi());
     }
     
      @Test

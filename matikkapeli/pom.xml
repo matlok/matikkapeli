@@ -34,9 +34,17 @@
                 <version>2.5</version>
             </plugin>
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>cobertura-maven-plugin</artifactId>
-                <version>2.6</version>
+    <groupId>org.codehaus.mojo</groupId>
+    <artifactId>cobertura-maven-plugin</artifactId>
+    <configuration>
+        <instrumentation>
+            <includes>
+                <include>matikkapeli.Logiikka/*.class</include>
+                <include>matikkapeli.Matikkapeli/*.class</include>
+            </includes>
+        </instrumentation>
+    </configuration>
+    <version>2.6</version>
             </plugin>
             <plugin>
                 <groupId>org.pitest</groupId>
@@ -44,10 +52,12 @@
                 <version>0.30</version>
                 <configuration>
                     <targetClasses>
-                        <param>ohjharj.*</param>
+                        <param>Logiikka*</param>
+                        <param>Matikkapeli*</param>
                     </targetClasses>
                     <targetTests>
-                        <param>ohjharj.*</param>
+                        <param>Logiikka*</param>
+                        <param>Matikkapeli*</param>
                     </targetTests>
                 </configuration>
             </plugin>

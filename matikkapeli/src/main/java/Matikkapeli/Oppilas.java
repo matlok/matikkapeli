@@ -24,16 +24,17 @@ public class Oppilas {
     }
     
     public void tarkistaTaso() {
-        int kysymykset = 0;
-        int oikeatVastaukset = 0;
+        double kysymykset = 0;
+        double oikeatVastaukset = 0;
                
         for(Tapahtuma tapahtuma: historia.getHistoria()) {
             kysymykset = kysymykset + tapahtuma.getTehtavienLukumaara();
             oikeatVastaukset = oikeatVastaukset + tapahtuma.getOikeatVastaukset();
         }
-        
+        double suhdeluku = oikeatVastaukset/kysymykset;
+        System.out.println(suhdeluku);
         if (kysymykset>100*this.taso) {
-            if (oikeatVastaukset/kysymykset > 0.5 ) {
+            if (suhdeluku > 0.5 ) {
                 this.taso++;
                 System.out.println("Olet onnistunut niin hyvin että nouset tasolle " + taso + "\n" + "ONNEKSI OLKOON!");
             }

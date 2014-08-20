@@ -31,8 +31,8 @@ public class HistoriaTest {
     
     @Test
     public void lisaaTapahtumaToimiiOikein() {
-        Timestamp ajanhetki = historia.lisaaTapahtuma("peli1", "Pekka", 2, 5, 10);
+        Timestamp ajanhetki = historia.lisaaTapahtuma("peli1", 2, 5, 10);
         
-        assertEquals("[" + ajanhetki + " Pekka" + " peli1" + " 5/10" + "]" ,historia.toString());
+        assertEquals("[" + ajanhetki + " peli1 " + 2 + " 5/10" + "]" ,historia.toString());
     }
 }

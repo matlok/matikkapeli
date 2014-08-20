@@ -10,7 +10,7 @@ import java.util.Scanner;
  * @author matluukk@cs
  */
 public class Yhteenlaskupeli implements Alapeli {
-    private ArrayList<YhteenlaskuTehtävä> tehtavat;
+    private ArrayList<YhteenlaskuTehtava> tehtavat;
     public Scanner lukija;
     private int oikeatVastaukset;
     private Oppilas oppilas;
@@ -21,13 +21,13 @@ public class Yhteenlaskupeli implements Alapeli {
         this.oikeatVastaukset = 0;
         tehtavat = new ArrayList();
         for(int i = 0; i<10; i++) {
-            YhteenlaskuTehtävä tehtava = new YhteenlaskuTehtävä(oppilas.getTaso());
+            YhteenlaskuTehtava tehtava = new YhteenlaskuTehtava(oppilas.getTaso());
             tehtavat.add(tehtava);
         }
     }
     @Override
     public void pelaaPeli() {
-    for(YhteenlaskuTehtävä tehtava: tehtavat) {
+    for(YhteenlaskuTehtava tehtava: tehtavat) {
         System.out.println(tehtava.kysymys + " = ?");
         String vastaus = lukija.nextLine();
         if(vastaus.equals(tehtava.oikeaVastaus)) {
@@ -41,5 +41,10 @@ public class Yhteenlaskupeli implements Alapeli {
         Timestamp aika = oppilas.historia.lisaaTapahtuma("Yhteenlasku", oppilas.getTaso(), oikeatVastaukset, 10);
         System.out.println("Sait " + oikeatVastaukset + " tehtävää oikein"+ "    tapahtuma lisätty " + aika.toString());
         oppilas.tarkistaTaso();
-}    
+}  
+
+    public ArrayList<YhteenlaskuTehtava> getTehtavat() {
+        return tehtavat;
+    }
+    
 }

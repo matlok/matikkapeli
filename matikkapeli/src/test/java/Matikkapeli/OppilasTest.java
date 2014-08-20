@@ -7,6 +7,7 @@ package Matikkapeli;
  */
 
 import Matikkapeli.Oppilas;
+import java.sql.Timestamp;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -47,5 +48,17 @@ public class OppilasTest {
     @Test
     public void konstruktoriAsettaaOletustasonOikein() {
         assertEquals(1, oppilas.getTaso());
+    }
+    
+    @Test
+    public void tarkistaTasoToimii() {
+        int i = 0;
+        while (i < 20) {
+            Timestamp aika = oppilas.historia.lisaaTapahtuma("peli1", 1, 6, 10);
+            System.out.println(aika.toString());
+            i++;
+        }
+        oppilas.tarkistaTaso();
+        assertTrue(oppilas.getTaso()==2);
     }
 }

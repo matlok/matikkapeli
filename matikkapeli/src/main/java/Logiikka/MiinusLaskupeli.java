@@ -48,5 +48,10 @@ public class MiinusLaskupeli implements Alapeli {
         Timestamp aika = oppilas.historia.lisaaTapahtuma("Miinuslasku", oppilas.getTaso(), oikeatVastaukset, 10);
         System.out.println("Sait " + oikeatVastaukset + " tehtävää oikein"+ "    tapahtuma lisätty " + aika.toString());
         oppilas.tarkistaTaso();
-}    
+} 
+
+    public ArrayList<MiinusLaskutehtava> getTehtavat() {
+        return tehtavat;
+    }
+    
 }
