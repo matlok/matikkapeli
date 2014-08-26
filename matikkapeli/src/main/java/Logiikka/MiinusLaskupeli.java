@@ -8,15 +8,15 @@ package Logiikka;
 
 import Matikkapeli.Oppilas;
 import java.sql.Timestamp;
-import java.util.ArrayList;
+import java.util.ArrayDeque;
 import java.util.Scanner;
 
 /**
  *
  * @author matluukk
  */
-public class MiinusLaskupeli implements Alapeli {
-     private ArrayList<MiinusLaskutehtava> tehtavat;
+public class MiinusLaskupeli extends Alapeli {
+     
      public Scanner lukija;
      private int oikeatVastaukset;
      private Oppilas oppilas;
@@ -26,15 +26,15 @@ public class MiinusLaskupeli implements Alapeli {
         this.oppilas = oppilas;
         this.lukija = lukija;
         this.oikeatVastaukset = 0;
-        tehtavat = new ArrayList();
+        ArrayDeque<Tehtava> tehtavat = new ArrayDeque();
         for(int i = 0; i<10; i++) {
             MiinusLaskutehtava tehtava = new MiinusLaskutehtava(oppilas.getTaso());
             tehtavat.add(tehtava);
         }
     }
-    @Override
+
     public void pelaaPeli() {
-    for(MiinusLaskutehtava tehtava: tehtavat) {
+    for(Tehtava tehtava: tehtavat) {
         System.out.println(tehtava.kysymys + " = ?");
         String vastaus = lukija.nextLine();
         if(vastaus.equals(tehtava.oikeaVastaus)) {
@@ -50,8 +50,13 @@ public class MiinusLaskupeli implements Alapeli {
         oppilas.tarkistaTaso();
 } 
 
-    public ArrayList<MiinusLaskutehtava> getTehtavat() {
+    public ArrayDeque<Tehtava> getTehtavat() {
         return tehtavat;
     }
     
+    public void tallennaTulos() {
+        oppilas.historia.lisaaTapahtuma("Miinuslasku", oppilas.getTaso(), oikeatVastaukset, 10);
+        oppilas.tarkistaTaso();
+    }
+       
 }

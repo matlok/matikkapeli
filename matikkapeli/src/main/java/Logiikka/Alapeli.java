@@ -6,10 +6,39 @@
 
 package Logiikka;
 
+import java.util.ArrayDeque;
+
 /**
  *
  * @author matluukk@cs
  */
-public interface Alapeli {
-    public void pelaaPeli();
+public class Alapeli {
+    protected ArrayDeque<Tehtava> tehtavat;
+    protected Tehtava nykyinenTehtava;
+    protected int oikeatVastaukset;
+    
+    private void seuraavaTehtava() {
+        if (tehtavat.isEmpty()) {
+            nykyinenTehtava = null;
+        }
+        
+        nykyinenTehtava = tehtavat.remove();
+    }
+    
+    public String haeKysymys() {
+        return nykyinenTehtava.getKysymys();
+    }
+    
+  
+    public String arvaus(String arvaus) {
+        if(nykyinenTehtava.vastaus(arvaus)) {
+            oikeatVastaukset++;
+            return "Oikea vastaus";
+        } else {
+            return "väärin";
+        }
+    }
+    public boolean peliJatkuu() {
+        return nykyinenTehtava != null;
+    }
 }

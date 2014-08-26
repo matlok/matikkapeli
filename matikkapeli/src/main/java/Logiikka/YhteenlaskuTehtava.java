@@ -4,10 +4,8 @@ import java.util.Random;
  *
  * @author matluukk@cs
  */
-public class YhteenlaskuTehtava {
+public class YhteenlaskuTehtava extends Tehtava {
     public int taso;
-    public String oikeaVastaus;
-    public String kysymys;
     private int luku1;
     private int luku2;
     

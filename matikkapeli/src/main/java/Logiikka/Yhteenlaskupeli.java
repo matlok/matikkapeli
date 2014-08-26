@@ -2,6 +2,7 @@ package Logiikka;
 
 import Matikkapeli.Oppilas;
 import java.sql.Timestamp;
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -9,25 +10,24 @@ import java.util.Scanner;
  *
  * @author matluukk@cs
  */
-public class Yhteenlaskupeli implements Alapeli {
-    private ArrayList<YhteenlaskuTehtava> tehtavat;
+public class Yhteenlaskupeli extends Alapeli {
     public Scanner lukija;
-    private int oikeatVastaukset;
     private Oppilas oppilas;
     
     public Yhteenlaskupeli(Oppilas oppilas, Scanner lukija) {
         this.oppilas = oppilas;
         this.lukija = lukija;
         this.oikeatVastaukset = 0;
-        tehtavat = new ArrayList();
+        tehtavat = new ArrayDeque();
         for(int i = 0; i<10; i++) {
             YhteenlaskuTehtava tehtava = new YhteenlaskuTehtava(oppilas.getTaso());
             tehtavat.add(tehtava);
         }
+        this.nykyinenTehtava = tehtavat.getFirst();
     }
-    @Override
+
     public void pelaaPeli() {
-    for(YhteenlaskuTehtava tehtava: tehtavat) {
+    for(Tehtava tehtava: tehtavat) {
         System.out.println(tehtava.kysymys + " = ?");
         String vastaus = lukija.nextLine();
         if(vastaus.equals(tehtava.oikeaVastaus)) {
@@ -43,8 +43,12 @@ public class Yhteenlaskupeli implements Alapeli {
         oppilas.tarkistaTaso();
 }  
 
-    public ArrayList<YhteenlaskuTehtava> getTehtavat() {
+    public ArrayDeque<Tehtava> getTehtavat() {
         return tehtavat;
     }
     
+    public void tallennaTulos() {
+        oppilas.historia.lisaaTapahtuma("Yhteenlasku", oppilas.getTaso(), oikeatVastaukset, 10);
+        oppilas.tarkistaTaso();
+    }
 }

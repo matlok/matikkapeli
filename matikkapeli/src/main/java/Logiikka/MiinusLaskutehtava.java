@@ -4,10 +4,8 @@ import java.util.Random;
  *
  * @author matluukk@cs
  */
-public class MiinusLaskutehtava {
+public class MiinusLaskutehtava extends Tehtava{
     public int taso;
-    public String oikeaVastaus;
-    public String kysymys;
     private int luku1;
     private int luku2;
     
@@ -36,4 +34,6 @@ public class MiinusLaskutehtava {
     public int getLuku2() {
         return luku2;
     }
+    
+    
 }
