@@ -6,7 +6,9 @@
 
 package Logiikka;
 
+import Matikkapeli.Oppilas;
 import java.util.ArrayDeque;
+import java.util.Scanner;
 
 /**
  *
@@ -16,13 +18,16 @@ public class Alapeli {
     protected ArrayDeque<Tehtava> tehtavat;
     protected Tehtava nykyinenTehtava;
     protected int oikeatVastaukset;
+    protected Oppilas oppilas;
+    public Scanner lukija;
     
-    private void seuraavaTehtava() {
+    public void seuraavaTehtava() {
         if (tehtavat.isEmpty()) {
             nykyinenTehtava = null;
         }
-        
+        else {
         nykyinenTehtava = tehtavat.remove();
+        }
     }
     
     public String haeKysymys() {
@@ -41,4 +46,9 @@ public class Alapeli {
     public boolean peliJatkuu() {
         return nykyinenTehtava != null;
     }
+
+    public int getOikeatVastaukset() {
+        return oikeatVastaukset;
+    }
+    
 }

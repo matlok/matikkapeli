@@ -17,20 +17,16 @@ import java.util.Scanner;
  */
 public class MiinusLaskupeli extends Alapeli {
      
-     public Scanner lukija;
-     private int oikeatVastaukset;
-     private Oppilas oppilas;
-    
-    
     public MiinusLaskupeli(Oppilas oppilas, Scanner lukija) {
         this.oppilas = oppilas;
         this.lukija = lukija;
         this.oikeatVastaukset = 0;
-        ArrayDeque<Tehtava> tehtavat = new ArrayDeque();
+        tehtavat = new ArrayDeque();
         for(int i = 0; i<10; i++) {
             MiinusLaskutehtava tehtava = new MiinusLaskutehtava(oppilas.getTaso());
             tehtavat.add(tehtava);
         }
+        this.nykyinenTehtava = tehtavat.getFirst();
     }
 
     public void pelaaPeli() {

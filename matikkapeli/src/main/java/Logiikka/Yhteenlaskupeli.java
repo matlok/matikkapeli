@@ -11,8 +11,6 @@ import java.util.Scanner;
  * @author matluukk@cs
  */
 public class Yhteenlaskupeli extends Alapeli {
-    public Scanner lukija;
-    private Oppilas oppilas;
     
     public Yhteenlaskupeli(Oppilas oppilas, Scanner lukija) {
         this.oppilas = oppilas;
