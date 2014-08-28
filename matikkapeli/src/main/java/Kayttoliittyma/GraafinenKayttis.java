@@ -13,6 +13,7 @@ import Tiedostonhallinta.Tiedostonhallinta;
 import java.awt.SystemColor;
 import static java.awt.SystemColor.control;
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -27,11 +28,12 @@ public class GraafinenKayttis extends javax.swing.JFrame {
      */
     private Oppilas oppilas;
     private Alapeli alapeli;
+    private Tiedostonhallinta tiedostonhallinta;
 
     public GraafinenKayttis() {
         initComponents();
         tehtaviaOikein.setText("");
-        
+
     }
 
     private void siirryTilaan(PelinTila tila) {
@@ -46,6 +48,7 @@ public class GraafinenKayttis extends javax.swing.JFrame {
             vastaus.setVisible(false);
             vastausNappi.setVisible(false);
             oikeinVaarin.setVisible(false);
+            tallennaNappi.setVisible(false);
             this.getRootPane().setDefaultButton(okNappi);
         } else if (tila == PelinTila.PELINVALINTA) {
             okNappi.setVisible(false);
@@ -59,6 +62,7 @@ public class GraafinenKayttis extends javax.swing.JFrame {
             vastausNappi.setVisible(false);
             oikeinVaarin.setVisible(false);
             kayttajaNimi.setVisible(false);
+            tallennaNappi.setVisible(true);
         } else if (tila == PelinTila.PELI) {
             vastaus.setText("");
             oikeinVaarin.setText("");
@@ -73,6 +77,7 @@ public class GraafinenKayttis extends javax.swing.JFrame {
             vastausNappi.setVisible(true);
             oikeinVaarin.setVisible(true);
             kayttajaNimi.setVisible(false);
+            tallennaNappi.setVisible(false);
             this.getRootPane().setDefaultButton(vastausNappi);
         }
     }
@@ -102,6 +107,7 @@ public class GraafinenKayttis extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         oikeinVaarin = new javax.swing.JLabel();
         tehtaviaOikein = new javax.swing.JLabel();
+        tallennaNappi = new javax.swing.JButton();
 
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
         jDialog1.getContentPane().setLayout(jDialog1Layout);
@@ -174,35 +180,18 @@ public class GraafinenKayttis extends javax.swing.JFrame {
         tehtaviaOikein.setText("Sait x oikein");
         tehtaviaOikein.setVisible(false);
 
+        tallennaNappi.setVisible(false);
+        tallennaNappi.setText("Tallenna");
+        tallennaNappi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tallennaNappiActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(207, 207, 207)
-                .addComponent(kayttajaNimi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(okNappi)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 144, Short.MAX_VALUE)
-                .addComponent(tuloste)
-                .addGap(26, 26, 26))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(244, 244, 244)
-                            .addComponent(miinusLaskuNappi))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(40, 40, 40)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(tervetuloaTeksti)
-                                .addComponent(yhteenLaskuNappi)
-                                .addComponent(tehtaviaOikein))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(63, 63, 63)
-                        .addComponent(jLabel1)
-                        .addGap(33, 33, 33)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(113, 113, 113)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -219,6 +208,34 @@ public class GraafinenKayttis extends javax.swing.JFrame {
                         .addGap(108, 108, 108)
                         .addComponent(oikeinVaarin)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(244, 244, 244)
+                                    .addComponent(miinusLaskuNappi))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(40, 40, 40)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(tervetuloaTeksti)
+                                        .addComponent(yhteenLaskuNappi)
+                                        .addComponent(tehtaviaOikein))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(63, 63, 63)
+                                .addComponent(jLabel1)
+                                .addGap(33, 33, 33)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(tallennaNappi))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(207, 207, 207)
+                        .addComponent(kayttajaNimi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(okNappi)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 144, Short.MAX_VALUE)
+                        .addComponent(tuloste)))
+                .addGap(26, 26, 26))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -236,7 +253,8 @@ public class GraafinenKayttis extends javax.swing.JFrame {
                         .addGap(36, 36, 36)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(yhteenLaskuNappi)
-                    .addComponent(miinusLaskuNappi))
+                    .addComponent(miinusLaskuNappi)
+                    .addComponent(tallennaNappi))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(26, 26, 26)
@@ -262,40 +280,26 @@ public class GraafinenKayttis extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void okNappiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okNappiActionPerformed
+        tiedostonhallinta = new Tiedostonhallinta(kayttajaNimi.getText());
+        this.oppilas = tiedostonhallinta.luo();
         siirryTilaan(PelinTila.PELINVALINTA);
-        this.oppilas = new Oppilas(kayttajaNimi.getText());
-
         tuloste.setText(kayttajaNimi.getText());
-        //kayttajaNimi.setVisible(false);
-        //okNappi.setVisible(false);
-        //tuloste.setVisible(true);
-        //yhteenLaskuNappi.setVisible(true);
-        //miinusLaskuNappi.setVisible(true);
-        //tervetuloaTeksti.setVisible(false);
     }//GEN-LAST:event_okNappiActionPerformed
 
     private void yhteenLaskuNappiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yhteenLaskuNappiActionPerformed
         siirryTilaan(PelinTila.PELI);
-        //tehtaviaOikein.setVisible(false);
-        //yhteenLaskuNappi.setVisible(false);
-        //miinusLaskuNappi.setVisible(false);
         alapeli = new Yhteenlaskupeli(oppilas, null);
-        //kysymys.setVisible(true);
-        //vastaus.setVisible(true);
-        //vastaus.setText("");
-        //vastausNappi.setVisible(true);
         kysymys.setText(alapeli.haeKysymys());
-        //oikeinVaarin.setVisible(true);
-        //oikeinVaarin.setText("");
     }//GEN-LAST:event_yhteenLaskuNappiActionPerformed
 
     private void vastausNappiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vastausNappiActionPerformed
-
         oikeinVaarin.setText(alapeli.arvaus(vastaus.getText()));
         alapeli.seuraavaTehtava();
         if (alapeli.peliJatkuu() == false) {
+            Timestamp aika = oppilas.historia.lisaaTapahtuma("Miinuslasku", oppilas.getTaso(), alapeli.getOikeatVastaukset(), 10);
             siirryTilaan(PelinTila.PELINVALINTA);
             tehtaviaOikein.setText("Sait " + alapeli.getOikeatVastaukset() + " tehtävää oikein.");
+            oppilas.tarkistaTaso();
         } else {
             kysymys.setText(alapeli.haeKysymys());
             vastaus.setText("");
@@ -304,18 +308,17 @@ public class GraafinenKayttis extends javax.swing.JFrame {
 
     private void miinusLaskuNappiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miinusLaskuNappiActionPerformed
         siirryTilaan(PelinTila.PELI);
-//        tehtaviaOikein.setVisible(false);
-//        yhteenLaskuNappi.setVisible(false);
-//        miinusLaskuNappi.setVisible(false);
         alapeli = new MiinusLaskupeli(oppilas, null);
-//        kysymys.setVisible(true);
-//        vastaus.setVisible(true);
-//        vastaus.setText("");
-//        vastausNappi.setVisible(true);
         kysymys.setText(alapeli.haeKysymys());
-//        oikeinVaarin.setVisible(true);
-//        oikeinVaarin.setText("");
     }//GEN-LAST:event_miinusLaskuNappiActionPerformed
+
+    private void tallennaNappiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tallennaNappiActionPerformed
+        try {
+            tiedostonhallinta.tallenna(oppilas);
+        } catch (IOException ex) {
+            Logger.getLogger(GraafinenKayttis.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_tallennaNappiActionPerformed
 
     /**
      * @param args the command line arguments
@@ -364,6 +367,7 @@ public class GraafinenKayttis extends javax.swing.JFrame {
     private javax.swing.JButton miinusLaskuNappi;
     private javax.swing.JLabel oikeinVaarin;
     private javax.swing.JButton okNappi;
+    private javax.swing.JButton tallennaNappi;
     private javax.swing.JLabel tehtaviaOikein;
     private javax.swing.JLabel tervetuloaTeksti;
     private javax.swing.JLabel tuloste;
