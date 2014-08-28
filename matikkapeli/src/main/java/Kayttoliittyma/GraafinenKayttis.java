@@ -6,6 +6,7 @@
 
 package Kayttoliittyma;
 
+import Logiikka.MiinusLaskupeli;
 import Logiikka.Yhteenlaskupeli;
 import Matikkapeli.Oppilas;
 import Tiedostonhallinta.Tiedostonhallinta;
@@ -23,6 +24,8 @@ public class GraafinenKayttis extends javax.swing.JFrame {
      * Creates new form GraafinenKayttis
     */
     private Oppilas oppilas;
+    private Yhteenlaskupeli yhteenlasku;
+    private MiinusLaskupeli miinuslasku;
     
     public GraafinenKayttis() {
         initComponents();
@@ -49,6 +52,9 @@ public class GraafinenKayttis extends javax.swing.JFrame {
         TervetuloaTeksti = new javax.swing.JLabel();
         kysymys = new javax.swing.JLabel();
         vastaus = new javax.swing.JTextField();
+        vastausNappi = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        oikeinVaarin = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
         jDialog1.getContentPane().setLayout(jDialog1Layout);
@@ -93,10 +99,22 @@ public class GraafinenKayttis extends javax.swing.JFrame {
 
         TervetuloaTeksti.setText("Tervetuloa pelaamaan!");
 
+        kysymys.setFont(new java.awt.Font("Ubuntu", 1, 24)); // NOI18N
         kysymys.setText("kysymys");
         kysymys.setVisible(false);
 
         vastaus.setVisible(false);
+
+        vastausNappi.setVisible(false);
+        vastausNappi.setText("Vastaa");
+        vastausNappi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vastausNappiActionPerformed(evt);
+            }
+        });
+
+        oikeinVaarin.setText("jLabel3");
+        oikeinVaarin.setVisible(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -111,27 +129,39 @@ public class GraafinenKayttis extends javax.swing.JFrame {
                 .addComponent(tuloste)
                 .addGap(26, 26, 26))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(244, 244, 244)
-                                .addComponent(MiinusLaskuNappi))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(40, 40, 40)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(TervetuloaTeksti)
-                                    .addComponent(YhteenLaskuNappi))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
-                            .addGap(63, 63, 63)
-                            .addComponent(jLabel1)
-                            .addGap(33, 33, 33)))
+                            .addGap(244, 244, 244)
+                            .addComponent(MiinusLaskuNappi))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(40, 40, 40)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(TervetuloaTeksti)
+                                .addComponent(YhteenLaskuNappi))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(113, 113, 113)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(kysymys)
-                            .addComponent(vastaus, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(63, 63, 63)
+                        .addComponent(jLabel1)
+                        .addGap(33, 33, 33)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(113, 113, 113)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(kysymys)
+                    .addComponent(vastaus, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(vastausNappi)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel2)
+                        .addContainerGap(263, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(152, 152, 152)
+                        .addComponent(oikeinVaarin)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -153,10 +183,16 @@ public class GraafinenKayttis extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(7, 7, 7)
-                .addComponent(kysymys)
-                .addGap(49, 49, 49)
-                .addComponent(vastaus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(105, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(kysymys)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(oikeinVaarin)
+                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(vastaus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(vastausNappi))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
 
         YhteenLaskuNappi.getAccessibleContext().setAccessibleName("");
@@ -179,12 +215,18 @@ public class GraafinenKayttis extends javax.swing.JFrame {
     private void YhteenLaskuNappiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_YhteenLaskuNappiActionPerformed
         YhteenLaskuNappi.setVisible(false);
         MiinusLaskuNappi.setVisible(false);
-        Yhteenlaskupeli yhteenlasku = new Yhteenlaskupeli(oppilas, null);
-        System.out.println("Suoritetaan...");
+        yhteenlasku = new Yhteenlaskupeli(oppilas, null);
         kysymys.setVisible(true);
         vastaus.setVisible(true);
+        vastausNappi.setVisible(true);
         kysymys.setText(yhteenlasku.haeKysymys());
     }//GEN-LAST:event_YhteenLaskuNappiActionPerformed
+
+    private void vastausNappiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vastausNappiActionPerformed
+        // TODO add your handling code here:
+        oikeinVaarin.setText(yhteenlasku.arvaus(vastaus.toString()));
+        
+    }//GEN-LAST:event_vastausNappiActionPerformed
 
     /**
      * @param args the command line arguments
@@ -230,11 +272,14 @@ public class GraafinenKayttis extends javax.swing.JFrame {
     private javax.swing.JButton YhteenLaskuNappi;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField kayttajaNimi;
     private javax.swing.JLabel kysymys;
+    private javax.swing.JLabel oikeinVaarin;
     private javax.swing.JLabel tuloste;
     private javax.swing.JTextField vastaus;
+    private javax.swing.JButton vastausNappi;
     // End of variables declaration//GEN-END:variables
 }

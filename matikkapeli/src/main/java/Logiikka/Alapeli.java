@@ -35,7 +35,7 @@ public class Alapeli {
             oikeatVastaukset++;
             return "Oikea vastaus";
         } else {
-            return "väärin";
+            return "Väärin";
         }
     }
     public boolean peliJatkuu() {
