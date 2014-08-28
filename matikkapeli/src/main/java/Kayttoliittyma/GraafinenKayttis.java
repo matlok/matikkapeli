@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Kayttoliittyma;
 
 import Logiikka.Alapeli;
@@ -25,12 +24,57 @@ public class GraafinenKayttis extends javax.swing.JFrame {
 
     /**
      * Creates new form GraafinenKayttis
-    */
+     */
     private Oppilas oppilas;
     private Alapeli alapeli;
-    
+
     public GraafinenKayttis() {
         initComponents();
+        tehtaviaOikein.setText("");
+        
+    }
+
+    private void siirryTilaan(PelinTila tila) {
+        if (tila == PelinTila.ALOITUS) {
+            okNappi.setVisible(true);
+            tuloste.setVisible(true);
+            tervetuloaTeksti.setVisible(true);
+            tehtaviaOikein.setVisible(false);
+            yhteenLaskuNappi.setVisible(false);
+            miinusLaskuNappi.setVisible(false);
+            kysymys.setVisible(false);
+            vastaus.setVisible(false);
+            vastausNappi.setVisible(false);
+            oikeinVaarin.setVisible(false);
+            this.getRootPane().setDefaultButton(okNappi);
+        } else if (tila == PelinTila.PELINVALINTA) {
+            okNappi.setVisible(false);
+            tuloste.setVisible(true);
+            tervetuloaTeksti.setVisible(false);
+            tehtaviaOikein.setVisible(true);
+            yhteenLaskuNappi.setVisible(true);
+            miinusLaskuNappi.setVisible(true);
+            kysymys.setVisible(false);
+            vastaus.setVisible(false);
+            vastausNappi.setVisible(false);
+            oikeinVaarin.setVisible(false);
+            kayttajaNimi.setVisible(false);
+        } else if (tila == PelinTila.PELI) {
+            vastaus.setText("");
+            oikeinVaarin.setText("");
+            okNappi.setVisible(false);
+            tuloste.setVisible(true);
+            tervetuloaTeksti.setVisible(false);
+            tehtaviaOikein.setVisible(true);
+            yhteenLaskuNappi.setVisible(false);
+            miinusLaskuNappi.setVisible(false);
+            kysymys.setVisible(true);
+            vastaus.setVisible(true);
+            vastausNappi.setVisible(true);
+            oikeinVaarin.setVisible(true);
+            kayttajaNimi.setVisible(false);
+            this.getRootPane().setDefaultButton(vastausNappi);
+        }
     }
 
     /**
@@ -46,12 +90,12 @@ public class GraafinenKayttis extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         kayttajaNimi = new javax.swing.JTextField();
-        OKnappi = new javax.swing.JButton();
+        okNappi = new javax.swing.JButton();
         tuloste = new javax.swing.JLabel();
-        YhteenLaskuNappi = new javax.swing.JButton();
-        MiinusLaskuNappi = new javax.swing.JButton();
+        yhteenLaskuNappi = new javax.swing.JButton();
+        miinusLaskuNappi = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        TervetuloaTeksti = new javax.swing.JLabel();
+        tervetuloaTeksti = new javax.swing.JLabel();
         kysymys = new javax.swing.JLabel();
         vastaus = new javax.swing.JTextField();
         vastausNappi = new javax.swing.JButton();
@@ -78,34 +122,35 @@ public class GraafinenKayttis extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         kayttajaNimi.setText("Käyttäjänimi");
+        kayttajaNimi.setNextFocusableComponent(okNappi);
 
-        OKnappi.setText("OK");
-        OKnappi.addActionListener(new java.awt.event.ActionListener() {
+        okNappi.setText("OK");
+        okNappi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                OKnappiActionPerformed(evt);
+                okNappiActionPerformed(evt);
             }
         });
 
         tuloste.setText("jLabel1");
         tuloste.setVisible(false);
 
-        YhteenLaskuNappi.setText("Aloita yhteenlasku");
-        YhteenLaskuNappi.setVisible(false);
-        YhteenLaskuNappi.addActionListener(new java.awt.event.ActionListener() {
+        yhteenLaskuNappi.setText("Aloita yhteenlasku");
+        yhteenLaskuNappi.setVisible(false);
+        yhteenLaskuNappi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                YhteenLaskuNappiActionPerformed(evt);
+                yhteenLaskuNappiActionPerformed(evt);
             }
         });
 
-        MiinusLaskuNappi.setText("Aloita miinuslasku");
-        MiinusLaskuNappi.setVisible(false);
-        MiinusLaskuNappi.addActionListener(new java.awt.event.ActionListener() {
+        miinusLaskuNappi.setText("Aloita miinuslasku");
+        miinusLaskuNappi.setVisible(false);
+        miinusLaskuNappi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MiinusLaskuNappiActionPerformed(evt);
+                miinusLaskuNappiActionPerformed(evt);
             }
         });
 
-        TervetuloaTeksti.setText("Tervetuloa pelaamaan!");
+        tervetuloaTeksti.setText("Tervetuloa pelaamaan!");
 
         kysymys.setFont(new java.awt.Font("Ubuntu", 1, 24)); // NOI18N
         kysymys.setText("kysymys");
@@ -121,11 +166,12 @@ public class GraafinenKayttis extends javax.swing.JFrame {
             }
         });
 
+        oikeinVaarin.setFont(new java.awt.Font("Ubuntu", 1, 24)); // NOI18N
         oikeinVaarin.setText("jLabel3");
         oikeinVaarin.setVisible(false);
 
         tehtaviaOikein.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
-        tehtaviaOikein.setText("Sait x vastausta oikein.");
+        tehtaviaOikein.setText("Sait x oikein");
         tehtaviaOikein.setVisible(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -136,7 +182,7 @@ public class GraafinenKayttis extends javax.swing.JFrame {
                 .addGap(207, 207, 207)
                 .addComponent(kayttajaNimi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(OKnappi)
+                .addComponent(okNappi)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 144, Short.MAX_VALUE)
                 .addComponent(tuloste)
                 .addGap(26, 26, 26))
@@ -145,12 +191,12 @@ public class GraafinenKayttis extends javax.swing.JFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                             .addGap(244, 244, 244)
-                            .addComponent(MiinusLaskuNappi))
+                            .addComponent(miinusLaskuNappi))
                         .addGroup(layout.createSequentialGroup()
                             .addGap(40, 40, 40)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(TervetuloaTeksti)
-                                .addComponent(YhteenLaskuNappi)
+                                .addComponent(tervetuloaTeksti)
+                                .addComponent(yhteenLaskuNappi)
                                 .addComponent(tehtaviaOikein))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(63, 63, 63)
@@ -170,9 +216,7 @@ public class GraafinenKayttis extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel2)
-                        .addContainerGap(263, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(152, 152, 152)
+                        .addGap(108, 108, 108)
                         .addComponent(oikeinVaarin)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
@@ -187,12 +231,12 @@ public class GraafinenKayttis extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(kayttajaNimi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(OKnappi)
-                            .addComponent(TervetuloaTeksti))
+                            .addComponent(okNappi)
+                            .addComponent(tervetuloaTeksti))
                         .addGap(36, 36, 36)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(YhteenLaskuNappi)
-                    .addComponent(MiinusLaskuNappi))
+                    .addComponent(yhteenLaskuNappi)
+                    .addComponent(miinusLaskuNappi))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(26, 26, 26)
@@ -203,80 +247,75 @@ public class GraafinenKayttis extends javax.swing.JFrame {
                 .addGap(7, 7, 7)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(kysymys)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(oikeinVaarin)
-                .addGap(40, 40, 40)
+                    .addComponent(jLabel2)
+                    .addComponent(oikeinVaarin))
+                .addGap(64, 64, 64)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(vastaus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(vastausNappi))
                 .addContainerGap(77, Short.MAX_VALUE))
         );
 
-        YhteenLaskuNappi.getAccessibleContext().setAccessibleName("");
+        yhteenLaskuNappi.getAccessibleContext().setAccessibleName("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void OKnappiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OKnappiActionPerformed
+    private void okNappiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okNappiActionPerformed
+        siirryTilaan(PelinTila.PELINVALINTA);
         this.oppilas = new Oppilas(kayttajaNimi.getText());
-        
-        tuloste.setText(kayttajaNimi.getText());
-        kayttajaNimi.setVisible(false);
-        OKnappi.setVisible(false);
-        tuloste.setVisible(true);
-        YhteenLaskuNappi.setVisible(true);
-        MiinusLaskuNappi.setVisible(true);
-        TervetuloaTeksti.setVisible(false);
-    }//GEN-LAST:event_OKnappiActionPerformed
 
-    private void YhteenLaskuNappiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_YhteenLaskuNappiActionPerformed
-        tehtaviaOikein.setVisible(false);
-        YhteenLaskuNappi.setVisible(false);
-        MiinusLaskuNappi.setVisible(false);
+        tuloste.setText(kayttajaNimi.getText());
+        //kayttajaNimi.setVisible(false);
+        //okNappi.setVisible(false);
+        //tuloste.setVisible(true);
+        //yhteenLaskuNappi.setVisible(true);
+        //miinusLaskuNappi.setVisible(true);
+        //tervetuloaTeksti.setVisible(false);
+    }//GEN-LAST:event_okNappiActionPerformed
+
+    private void yhteenLaskuNappiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yhteenLaskuNappiActionPerformed
+        siirryTilaan(PelinTila.PELI);
+        //tehtaviaOikein.setVisible(false);
+        //yhteenLaskuNappi.setVisible(false);
+        //miinusLaskuNappi.setVisible(false);
         alapeli = new Yhteenlaskupeli(oppilas, null);
-        kysymys.setVisible(true);
-        vastaus.setVisible(true);
-        vastaus.setText("");
-        vastausNappi.setVisible(true);
+        //kysymys.setVisible(true);
+        //vastaus.setVisible(true);
+        //vastaus.setText("");
+        //vastausNappi.setVisible(true);
         kysymys.setText(alapeli.haeKysymys());
-        oikeinVaarin.setVisible(true);
-        oikeinVaarin.setText("");
-    }//GEN-LAST:event_YhteenLaskuNappiActionPerformed
+        //oikeinVaarin.setVisible(true);
+        //oikeinVaarin.setText("");
+    }//GEN-LAST:event_yhteenLaskuNappiActionPerformed
 
     private void vastausNappiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vastausNappiActionPerformed
 
         oikeinVaarin.setText(alapeli.arvaus(vastaus.getText()));
         alapeli.seuraavaTehtava();
-        if(alapeli.peliJatkuu()==false) {
-            YhteenLaskuNappi.setVisible(true);
-            MiinusLaskuNappi.setVisible(true);
-            kysymys.setVisible(false);
-            vastaus.setVisible(false);
-            vastausNappi.setVisible(false);
-            oikeinVaarin.setVisible(false);
-            tehtaviaOikein.setVisible(true);
+        if (alapeli.peliJatkuu() == false) {
+            siirryTilaan(PelinTila.PELINVALINTA);
             tehtaviaOikein.setText("Sait " + alapeli.getOikeatVastaukset() + " tehtävää oikein.");
-        }
-        else {
-        kysymys.setText(alapeli.haeKysymys());
-        vastaus.setText("");
+        } else {
+            kysymys.setText(alapeli.haeKysymys());
+            vastaus.setText("");
         }
     }//GEN-LAST:event_vastausNappiActionPerformed
 
-    private void MiinusLaskuNappiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MiinusLaskuNappiActionPerformed
-        tehtaviaOikein.setVisible(false);
-        YhteenLaskuNappi.setVisible(false);
-        MiinusLaskuNappi.setVisible(false);
+    private void miinusLaskuNappiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miinusLaskuNappiActionPerformed
+        siirryTilaan(PelinTila.PELI);
+//        tehtaviaOikein.setVisible(false);
+//        yhteenLaskuNappi.setVisible(false);
+//        miinusLaskuNappi.setVisible(false);
         alapeli = new MiinusLaskupeli(oppilas, null);
-        kysymys.setVisible(true);
-        vastaus.setVisible(true);
-        vastaus.setText("");
-        vastausNappi.setVisible(true);
+//        kysymys.setVisible(true);
+//        vastaus.setVisible(true);
+//        vastaus.setText("");
+//        vastausNappi.setVisible(true);
         kysymys.setText(alapeli.haeKysymys());
-        oikeinVaarin.setVisible(true);
-        oikeinVaarin.setText("");
-    }//GEN-LAST:event_MiinusLaskuNappiActionPerformed
+//        oikeinVaarin.setVisible(true);
+//        oikeinVaarin.setText("");
+    }//GEN-LAST:event_miinusLaskuNappiActionPerformed
 
     /**
      * @param args the command line arguments
@@ -309,17 +348,12 @@ public class GraafinenKayttis extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new GraafinenKayttis().setVisible(true);
-                
-                
+
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton MiinusLaskuNappi;
-    private javax.swing.JButton OKnappi;
-    private javax.swing.JLabel TervetuloaTeksti;
-    private javax.swing.JButton YhteenLaskuNappi;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -327,10 +361,14 @@ public class GraafinenKayttis extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField kayttajaNimi;
     private javax.swing.JLabel kysymys;
+    private javax.swing.JButton miinusLaskuNappi;
     private javax.swing.JLabel oikeinVaarin;
+    private javax.swing.JButton okNappi;
     private javax.swing.JLabel tehtaviaOikein;
+    private javax.swing.JLabel tervetuloaTeksti;
     private javax.swing.JLabel tuloste;
     private javax.swing.JTextField vastaus;
     private javax.swing.JButton vastausNappi;
+    private javax.swing.JButton yhteenLaskuNappi;
     // End of variables declaration//GEN-END:variables
 }

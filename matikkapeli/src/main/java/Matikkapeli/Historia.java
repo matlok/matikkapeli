@@ -21,6 +21,10 @@ public class Historia {
         return ajanhetki;
     }
     
+    public void lisaaTapahtuma(Tapahtuma tapahtuma) {
+        historia.add(tapahtuma);
+    }
+    
     public ArrayList<Tapahtuma> getHistoria() {
         return historia;
     }

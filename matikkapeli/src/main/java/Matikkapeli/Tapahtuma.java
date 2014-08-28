@@ -10,7 +10,6 @@ import java.util.Date;
  */
 public class Tapahtuma implements Serializable {
 
-    private final java.util.Date aika = new java.util.Date();
     private final Timestamp ajanhetki;
     private final String peli;
     private final int oikeatVastaukset;
@@ -18,14 +17,10 @@ public class Tapahtuma implements Serializable {
     private final int taso;
 
     public Tapahtuma(String peli, int taso, int oikeatVastaukset, int tehtavienLukumaara) {
-        this.peli = peli;
-        this.oikeatVastaukset = oikeatVastaukset;
-        this.tehtavienLukumaara = tehtavienLukumaara;
-        this.ajanhetki = new Timestamp(aika.getTime());
-        this.taso = taso;
+        this(new Timestamp(new java.util.Date().getTime()), peli, taso, oikeatVastaukset, tehtavienLukumaara);
     }
 
-    public Tapahtuma(Timestamp ajanhetki, int taso, String peli, int oikeatVastaukset, int tehtavienLukumaara) {
+    public Tapahtuma(Timestamp ajanhetki, String peli, int taso, int oikeatVastaukset, int tehtavienLukumaara) {
         this.ajanhetki = ajanhetki;
         this.peli = peli;
         this.taso = taso;

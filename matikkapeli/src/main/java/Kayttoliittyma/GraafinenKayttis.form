@@ -60,7 +60,7 @@
               <EmptySpace min="-2" pref="207" max="-2" attributes="0"/>
               <Component id="kayttajaNimi" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="OKnappi" min="-2" max="-2" attributes="0"/>
+              <Component id="okNappi" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="144" max="32767" attributes="0"/>
               <Component id="tuloste" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
@@ -70,13 +70,13 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="244" max="-2" attributes="0"/>
-                          <Component id="MiinusLaskuNappi" min="-2" max="-2" attributes="0"/>
+                          <Component id="miinusLaskuNappi" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="TervetuloaTeksti" min="-2" max="-2" attributes="0"/>
-                              <Component id="YhteenLaskuNappi" min="-2" max="-2" attributes="0"/>
+                              <Component id="tervetuloaTeksti" min="-2" max="-2" attributes="0"/>
+                              <Component id="yhteenLaskuNappi" min="-2" max="-2" attributes="0"/>
                               <Component id="tehtaviaOikein" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -104,10 +104,7 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="263" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="152" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="108" max="-2" attributes="0"/>
                       <Component id="oikeinVaarin" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -127,15 +124,15 @@
                   <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="kayttajaNimi" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="OKnappi" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="TervetuloaTeksti" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="okNappi" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tervetuloaTeksti" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="YhteenLaskuNappi" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="MiinusLaskuNappi" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="yhteenLaskuNappi" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="miinusLaskuNappi" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
@@ -151,10 +148,9 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="kysymys" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="oikeinVaarin" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="oikeinVaarin" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="vastaus" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="vastausNappi" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -168,14 +164,17 @@
     <Component class="javax.swing.JTextField" name="kayttajaNimi">
       <Properties>
         <Property name="text" type="java.lang.String" value="K&#xe4;ytt&#xe4;j&#xe4;nimi"/>
+        <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+          <ComponentRef name="okNappi"/>
+        </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="OKnappi">
+    <Component class="javax.swing.JButton" name="okNappi">
       <Properties>
         <Property name="text" type="java.lang.String" value="OK"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="OKnappiActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="okNappiActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="tuloste">
@@ -186,7 +185,7 @@
         <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="tuloste.setVisible(false);"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JButton" name="YhteenLaskuNappi">
+    <Component class="javax.swing.JButton" name="yhteenLaskuNappi">
       <Properties>
         <Property name="text" type="java.lang.String" value="Aloita yhteenlasku"/>
       </Properties>
@@ -194,26 +193,26 @@
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value=""/>
       </AccessibilityProperties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="YhteenLaskuNappiActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="yhteenLaskuNappiActionPerformed"/>
       </Events>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="YhteenLaskuNappi.setVisible(false);"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="yhteenLaskuNappi.setVisible(false);"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JButton" name="MiinusLaskuNappi">
+    <Component class="javax.swing.JButton" name="miinusLaskuNappi">
       <Properties>
         <Property name="text" type="java.lang.String" value="Aloita miinuslasku"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MiinusLaskuNappiActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="miinusLaskuNappiActionPerformed"/>
       </Events>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="MiinusLaskuNappi.setVisible(false);"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="miinusLaskuNappi.setVisible(false);"/>
       </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
     </Component>
-    <Component class="javax.swing.JLabel" name="TervetuloaTeksti">
+    <Component class="javax.swing.JLabel" name="tervetuloaTeksti">
       <Properties>
         <Property name="text" type="java.lang.String" value="Tervetuloa pelaamaan!"/>
       </Properties>
@@ -249,6 +248,9 @@
     </Component>
     <Component class="javax.swing.JLabel" name="oikeinVaarin">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Ubuntu" size="24" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="jLabel3"/>
       </Properties>
       <AuxValues>
@@ -260,7 +262,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Ubuntu" size="18" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Sait x vastausta oikein."/>
+        <Property name="text" type="java.lang.String" value="Sait x oikein"/>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="tehtaviaOikein.setVisible(false);"/>
