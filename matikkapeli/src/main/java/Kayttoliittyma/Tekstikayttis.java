@@ -1,3 +1,7 @@
+/**
+ * @author Matias Luukkanen
+ * @version 0.01
+ */
 package Kayttoliittyma;
 
 import Logiikka.MiinusLaskupeli;
@@ -8,15 +12,12 @@ import Tiedostonhallinta.Tiedostonhallinta;
 import java.io.IOException;
 
 public class Tekstikayttis {
-    
+
     public Tekstikayttis() {
 
-        
     }
-    
-    
+
     public void aja() throws IOException {
-        
 
         Scanner lukija = new Scanner(System.in);
         System.out.println("Tervetuloa pelaamaan!");
@@ -25,7 +26,6 @@ public class Tekstikayttis {
         Tiedostonhallinta tiedostonhallinta = new Tiedostonhallinta(nimi);
         Oppilas oppilas = tiedostonhallinta.luo();
         String komento = "";
-        
 
         while (!komento.equals("lopeta")) {
             System.out.println("Jos haluat harjoitella yhteenlaskua kirjoita \"yhteenlasku\"");
@@ -42,7 +42,7 @@ public class Tekstikayttis {
                 MiinusLaskupeli miinuslasku = new MiinusLaskupeli(oppilas, lukija);
                 miinuslasku.pelaaPeli();
             } else if (komento.equals("lopeta")) {
-                
+
             } else {
                 System.out.println("Nyt en ymmärrä");
             }

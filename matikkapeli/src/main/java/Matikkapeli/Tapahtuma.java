@@ -1,3 +1,7 @@
+/**
+ * @author Matias Luukkanen
+ * @version 0.01
+ */
 package Matikkapeli;
 
 import java.io.Serializable;
@@ -5,15 +9,32 @@ import java.sql.Timestamp;
 import java.util.Date;
 
 /**
+ * Sisältää tiedot suoritetusta pelistä jotta siitä voidaan lisätä merkintä
+ * pelaajan tapahtumahistoriaan.
  *
  * @author matluukk
  */
 public class Tapahtuma implements Serializable {
 
+    /**
+     * Ajanhetki jolloin tapahtuma on alunperin luotu.
+     */
     private final Timestamp ajanhetki;
+    /**
+     * Alapelin nimi.
+     */
     private final String peli;
+    /**
+     * Oikeiden vastausten lukumäärä.
+     */
     private final int oikeatVastaukset;
+    /**
+     * Kysymysten lukumäärä.
+     */
     private final int tehtavienLukumaara;
+    /**
+     * Suoritetun pelin vaikeustaso.
+     */
     private final int taso;
 
     public Tapahtuma(String peli, int taso, int oikeatVastaukset, int tehtavienLukumaara) {
@@ -40,7 +61,7 @@ public class Tapahtuma implements Serializable {
     public String getPelinNimi() {
         return peli;
     }
-    
+
     public int getTaso() {
         return taso;
     }

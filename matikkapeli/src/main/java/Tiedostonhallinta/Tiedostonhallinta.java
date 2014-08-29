@@ -1,3 +1,7 @@
+/**
+ * @author Matias Luukkanen
+ * @version 0.01
+ */
 package Tiedostonhallinta;
 
 import Matikkapeli.Oppilas;
@@ -10,9 +14,24 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Tiedostonhallintaa hoitava luokka joka myös luo Oppilas-olion käyttöliittymän
+ * antaman nimen perusteella.
+ *
+ * @author matluukk
+ */
+
 public class Tiedostonhallinta {
 
+    /**
+     * Tiedosto johon tallennetaan Oppilaan tapahtumahistoria ja taso.
+     */
     private File tiedosto;
+    /**
+     * Käyttöliittymältä saatu merkkijono johon on tallennettu käyttäjän
+     * syöttämä nimi, jota käytetään Oppilas-olion parametrinä, sekä
+     * tallennustiedoston nimenä.
+     */
     private String nimi;
 
     public Tiedostonhallinta(String nimi) {
@@ -20,6 +39,18 @@ public class Tiedostonhallinta {
         this.nimi = nimi;
     }
 
+    /**
+     * Kirjoittaa Oppilaan tapahtumahistorian tiedostoon, josta se voidaan lukea
+     * seuraavalla käyttökerralla.
+     *
+     * Käy läpi kaikki Oppilaan Historiasta löytyvät Tapahtuma-oliot ja
+     * tallentaa niiden muuttujat tiedostoon joka on alustettu luokan
+     * konstruktorissa.
+     *
+     * @param oppilas Peliä käyttävä käyttävä Oppilas-olio.
+     * @throws IOException tiedostoon kirjoittamisen epäonnistumisen
+     * tapahtuessa.
+     */
     public void tallenna(Oppilas oppilas) throws IOException {
         FileWriter kirjoittaja = new FileWriter(tiedosto);
         kirjoittaja.write(oppilas.getNimi() + ":" + oppilas.getTaso() + "\n");
@@ -35,6 +66,17 @@ public class Tiedostonhallinta {
         kirjoittaja.close();
     }
 
+    /**
+     * Yrittää lukea tiedostosta Oppilaan tietoja ja sen epäonnistuessa luo
+     * uuden.
+     *
+     * Käy läpi tiedoston löytyessä jokaisen rivin joka sisältää tarvittavat
+     * parametrit Tapahtuma-olion luomiseksi ja lisää ne uuden Oppilas-olion
+     * Historiaan.
+     *
+     * @return Oppilas-olio joka on saman nimisen tiedoston löytyessä
+     * uudelleenrakennettu edellisellä käyttökerralla tallennettua vastaavaksi.
+     */
     public Oppilas luo() {
 
         Scanner lukija;

@@ -1,25 +1,42 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * @author Matias Luukkanen
+ * @version 0.01
  */
-
 package Logiikka;
 
 /**
+ * Yläluokka alapelien tehtäville.
  *
- * @author matluukk
  */
 public class Tehtava {
+
+    /**
+     * Sisältää oikean vastauksen kyseiseen tehtävään.
+     */
     protected String oikeaVastaus;
+    /**
+     * Sisältää kyseisen tehtävän kysymyksen.
+     */
     protected String kysymys;
-    
+
+    /**
+     * Tarkistaa onko käyttäjän syötteestä noudettu arvaus sama kuin tehtävän
+     * oikea vastaus.
+     *
+     * @param arvaus Käyttäjän syötteestä noudettu merkkijono.
+     * @return true jos arvaus on sama kuin oikeaVastaus
+     */
     public boolean vastaus(String arvaus) {
         return arvaus.equals(oikeaVastaus);
     }
 
+    /**
+     * Getteri joka palauttaa kyseisen tehtävän kysymyksen.
+     *
+     * @return Palauttaa merkkijonon joka on tehtävän kysymys.
+     */
     public String getKysymys() {
         return kysymys;
     }
-    
+
 }
