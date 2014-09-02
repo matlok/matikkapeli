@@ -62,5 +62,9 @@ public class MiinusLaskutehtava extends Tehtava {
     public int getLuku2() {
         return luku2;
     }
+    
+    public int getTaso() {
+        return taso;
+    }
 
 }

@@ -4,7 +4,7 @@
  */
 package Kayttoliittyma;
 
-import Logiikka.MiinusLaskupeli;
+import Logiikka.Miinuslaskupeli;
 import java.util.Scanner;
 import Matikkapeli.Oppilas;
 import Logiikka.Yhteenlaskupeli;
@@ -39,7 +39,7 @@ public class Tekstikayttis {
             } else if (komento.equals("historia")) {
                 System.out.println(oppilas.historia.toString());
             } else if (komento.equals("miinuslasku")) {
-                MiinusLaskupeli miinuslasku = new MiinusLaskupeli(oppilas, lukija);
+                Miinuslaskupeli miinuslasku = new Miinuslaskupeli(oppilas, lukija);
                 miinuslasku.pelaaPeli();
             } else if (komento.equals("lopeta")) {
 

@@ -16,18 +16,18 @@ import static org.junit.Assert.*;
  *
  * @author matluukk
  */
-public class MiinusLaskupeliTest {
-    private MiinusLaskupeli peli;
+public class MiinuslaskupeliTest {
+    private Miinuslaskupeli peli;
     private Oppilas oppilas;
     
-    public MiinusLaskupeliTest() {
+    public MiinuslaskupeliTest() {
     }
     
     @Before
     public void setUp() {
         Scanner lukija = new Scanner(System.in);
         oppilas = new Oppilas("pertti", 1);
-        this.peli = new MiinusLaskupeli(oppilas, lukija);
+        this.peli = new Miinuslaskupeli(oppilas, lukija);
     }
 
     @Test

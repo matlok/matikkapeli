@@ -5,7 +5,7 @@
 package Kayttoliittyma;
 
 import Logiikka.Alapeli;
-import Logiikka.MiinusLaskupeli;
+import Logiikka.Miinuslaskupeli;
 import Logiikka.Yhteenlaskupeli;
 import Matikkapeli.Oppilas;
 import Tiedostonhallinta.Tiedostonhallinta;
@@ -307,7 +307,7 @@ public class GraafinenKayttis extends javax.swing.JFrame {
 
     private void miinusLaskuNappiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miinusLaskuNappiActionPerformed
         siirryTilaan(PelinTila.PELI);
-        alapeli = new MiinusLaskupeli(oppilas, null);
+        alapeli = new Miinuslaskupeli(oppilas, null);
         kysymys.setText(alapeli.haeKysymys());
     }//GEN-LAST:event_miinusLaskuNappiActionPerformed
 

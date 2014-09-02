@@ -13,9 +13,9 @@ import java.util.Scanner;
  * Alapelin alaluokka.
  *
  */
-public class MiinusLaskupeli extends Alapeli {
+public class Miinuslaskupeli extends Alapeli {
 
-    public MiinusLaskupeli(Oppilas oppilas, Scanner lukija) {
+    public Miinuslaskupeli(Oppilas oppilas, Scanner lukija) {
         this.oppilas = oppilas;
         this.lukija = lukija;
         this.oikeatVastaukset = 0;

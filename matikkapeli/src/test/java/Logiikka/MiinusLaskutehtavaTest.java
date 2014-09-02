@@ -6,11 +6,7 @@ package Logiikka;
  * and open the template in the editor.
  */
 
-import Logiikka.MiinusLaskutehtava;
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -33,7 +29,7 @@ public class MiinusLaskutehtavaTest {
  
     @Test
     public void konstruktoriAsettaaTasonOikein() {
-        assertEquals(2,tehtava2.taso);
+        assertEquals(2,tehtava2.getTaso());
     }
     
     @Test
