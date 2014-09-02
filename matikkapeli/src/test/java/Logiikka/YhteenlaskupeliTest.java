@@ -7,6 +7,8 @@
 package Logiikka;
 
 import Matikkapeli.Oppilas;
+import Matikkapeli.Tapahtuma;
+import java.sql.Timestamp;
 import java.util.Scanner;
 import org.junit.Before;
 import org.junit.Test;
@@ -38,4 +40,17 @@ public class YhteenlaskupeliTest {
         
     }
     
+    @Test
+    public void tallennaTulosToimii() {
+        peli = new Yhteenlaskupeli(oppilas, null);
+        for (int i = 0; i < 10; i++) {
+            String oikeaVastaus = peli.nykyinenTehtava.oikeaVastaus;
+            peli.arvaus(oikeaVastaus);
+        }
+        peli.tallennaTulos();
+        Tapahtuma loydetty = oppilas.historia.getHistoria().get(0);
+        Timestamp aika = loydetty.getAjanhetki();
+        Tapahtuma odotettuTapahtuma = new Tapahtuma(aika, "Yhteenlasku", 1, 10, 10);
+        assertEquals(odotettuTapahtuma.toString(), oppilas.historia.getHistoria().get(0).toString());
+    }
 }
