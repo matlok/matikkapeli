@@ -18,7 +18,7 @@ public class Tehtava {
      * Sisältää kyseisen tehtävän kysymyksen.
      */
     protected String kysymys;
-    
+
     /**
      * Tarkistaa onko käyttäjän syötteestä noudettu arvaus sama kuin tehtävän
      * oikea vastaus.

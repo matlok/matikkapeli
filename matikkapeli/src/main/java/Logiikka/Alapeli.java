@@ -21,7 +21,8 @@ public class Alapeli {
      */
     protected ArrayDeque<Tehtava> tehtavat;
     /**
-     * Tehtävä-olio joka on kulloinkin aktiivisena ja null jos kaikki tehtävät on käyty läpi.
+     * Tehtävä-olio joka on kulloinkin aktiivisena ja null jos kaikki tehtävät
+     * on käyty läpi.
      */
     protected Tehtava nykyinenTehtava;
     /**
@@ -33,7 +34,8 @@ public class Alapeli {
      */
     protected Oppilas oppilas;
     /**
-     * Tekstikäyttöliittymää varten annettu käyttäjäsyöteen lähteenä toimiva Scanner-olio.
+     * Tekstikäyttöliittymää varten annettu käyttäjäsyöteen lähteenä toimiva
+     * Scanner-olio.
      */
     public Scanner lukija;
 

@@ -20,13 +20,12 @@ import java.util.Scanner;
  *
  * @author matluukk
  */
-
 public class Tiedostonhallinta {
 
     /**
      * Tiedosto johon tallennetaan Oppilaan tapahtumahistoria ja taso.
      */
-    private File tiedosto;
+    private final File tiedosto;
     /**
      * Käyttöliittymältä saatu merkkijono johon on tallennettu käyttäjän
      * syöttämä nimi, jota käytetään Oppilas-olion parametrinä, sekä
@@ -103,7 +102,6 @@ public class Tiedostonhallinta {
             int tehtavienLukumaara = Integer.parseInt(rivinSisalto[4]);
             Tapahtuma tapahtuma = new Tapahtuma(ajanhetki, peli, tapahtumanTaso, oikeatVastaukset, tehtavienLukumaara);
             oppilas.historia.lisaaTapahtuma(tapahtuma);
-            //oppilas.historia.lisaaTapahtuma(peli, tapahtumanTaso, oikeatVastaukset, tehtavienLukumaara);
         }
         System.out.println("Tervetuloa takaisin!");
         return oppilas;

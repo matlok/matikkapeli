@@ -1,4 +1,4 @@
-/**
+        /**
  * @author      Matias Luukkanen 
  * @version     0.01
  */
@@ -20,7 +20,7 @@ import java.util.logging.Logger;
  *
  * @author matluukk
  */
-public class GraafinenKayttis extends javax.swing.JFrame {
+public class GUI extends javax.swing.JFrame {
 
     /**
      * Creates new form GraafinenKayttis
@@ -29,7 +29,7 @@ public class GraafinenKayttis extends javax.swing.JFrame {
     private Alapeli alapeli;
     private Tiedostonhallinta tiedostonhallinta;
 
-    public GraafinenKayttis() {
+    public GUI() {
         initComponents();
         tehtaviaOikein.setText("");
 
@@ -315,7 +315,7 @@ public class GraafinenKayttis extends javax.swing.JFrame {
         try {
             tiedostonhallinta.tallenna(oppilas);
         } catch (IOException ex) {
-            Logger.getLogger(GraafinenKayttis.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_tallennaNappiActionPerformed
 
@@ -336,20 +336,20 @@ public class GraafinenKayttis extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GraafinenKayttis.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GraafinenKayttis.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GraafinenKayttis.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GraafinenKayttis.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GraafinenKayttis().setVisible(true);
+                new GUI().setVisible(true);
 
             }
         });
